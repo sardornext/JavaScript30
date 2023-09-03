@@ -1,0 +1,29 @@
+body{
+    background-image: url("magicpattern-grid-pattern-1693741672301.png");
+}
+
+
+ .key {
+     display: inline-block;
+     margin: 10px;
+     padding: 10px;
+     border: 2px solid #333;
+     background-color: #ddd;
+     text-align: center;
+     font-size: 20px;
+     transition: all 0.1s ease;
+ }
+
+.playing {
+    transform: scale(1.1); /* Add a scaling effect when the key is pressed */
+    background-color: #ffc600;
+    border-color: #ffc600;
+    box-shadow: 0 0 10px rgba(255, 198, 0, 0.5);
+}
+
+kbd {
+    display: block;
+    font-size: 1.5rem;
+    color: #fff;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
