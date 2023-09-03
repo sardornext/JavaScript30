@@ -7,9 +7,12 @@
 </head>
 <body>
 
-
+<h1>Day 2 Clock</h1>
+<a href="clock.html">Second Clock you can see here</a>
     <div class="clock">
+
       <div class="clock-face">
+
         <div class="hand hour-hand"></div>
         <div class="hand min-hand"></div>
         <div class="hand second-hand"></div>
@@ -17,30 +20,13 @@
     </div>
 
 
-  <style>
-    html {
-      background: #40ec57 url(https://unsplash.it/1500/1000?image=881&blur=5);
-      background: #40ec57 url(https://unsplash.it/1500/1000?image=881&blur=5);
-      background: #40ec57 url(https://unsplash.it/1500/1000?image=881&blur=5);
-      background-size: cover;
-      font-family: 'helvetica neue';
-      text-align: center;
-      font-size: 10px;
-    }
 
-    body {
-      margin: 0;
-      font-size: 2rem;
-      display: flex;
-      flex: 1;
-      min-height: 100vh;
-      align-items: center;
-    }
+  <style>
 
     .clock {
       width: 30rem;
       height: 30rem;
-      border: 20px solid white;
+      border: 20px solid green;
       border-radius: 50%;
       margin: 50px auto;
       position: relative;
@@ -74,28 +60,67 @@
   </style>
 
   <script>
-    const secondHand = document.querySelector('.second-hand');
-    const minsHand = document.querySelector('.min-hand');
-    const hourHand = document.querySelector('.hour-hand');
+    // const secondHand = document.querySelector('.second-hand');
+    // const minsHand = document.querySelector('.min-hand');
+    // const hourHand = document.querySelector('.hour-hand');
+    //
+    // function setDate() {
+    //   const now = new Date();
+    //   const seconds = now.getSeconds();
+    //   const secondsDegrees = ((seconds / 60) * 360) + 90;
+    //   const secondHand = document.querySelector('.second-hand');
+    //   secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+    //
+    //   const mins = now.getMinutes();
+    //   const minsDegrees = ((mins / 60) * 360) + ((seconds/60)*6) + 90;
+    //   const minsHand = document.querySelector('.min-hand');
+    //   minsHand.style.transform = `rotate(${minsDegrees}deg)`;
+    //
+    //   const hour = now.getHours();
+    //   const hourDegrees = ((hour / 12) * 360) + ((mins/60)*30) + 90;
+    //   const hourHand = document.querySelector('.hour-hand');
+    // }
+    //
+    // setInterval(setDate, 1000);
 
-    function setDate() {
+
+    // Function to update the clock display
+    // function updateClock() {
+    //   const now = new Date();
+    //   const hours = now.getHours().toString().padStart(2, '0');
+    //   const minutes = now.getMinutes().toString().padStart(2, '0');
+    //   const seconds = now.getSeconds().toString().padStart(2, '0');
+    //
+    //   const timeString = `${hours}:${minutes}:${seconds}`;
+    //   document.getElementById('clock').textContent = timeString;
+    // }
+    //
+    // // Update the clock every second
+    // setInterval(updateClock, 1000);
+    //
+    // // Initial update
+    // updateClock();
+
+    function updateClock() {
       const now = new Date();
+      const hours = now.getHours() % 12;
+      const minutes = now.getMinutes();
       const seconds = now.getSeconds();
-      const secondsDegrees = ((seconds / 60) * 360) + 90;
-      const secondHand = document.querySelector('.second-hand');
-      secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+      console.log(hours, minutes, seconds);
+      const hourDeg = (360 / 12) * hours + (360 / 12) * (minutes / 60);
+      const minDeg = (360 / 60) * minutes + (360 / 60) * (seconds / 60);
+      const secDeg = (360 / 60) * seconds;
 
-      const mins = now.getMinutes();
-      const minsDegrees = ((mins / 60) * 360) + ((seconds/60)*6) + 90;
-      const minsHand = document.querySelector('.min-hand');
-      minsHand.style.transform = `rotate(${minsDegrees}deg)`;
-
-      const hour = now.getHours();
-      const hourDegrees = ((hour / 12) * 360) + ((mins/60)*30) + 90;
-      const hourHand = document.querySelector('.hour-hand');
+      document.querySelector(".hour-hand").style.transform = `rotate(${hourDeg}deg)`;
+      document.querySelector(".min-hand").style.transform = `rotate(${minDeg}deg)`;
+      document.querySelector(".second-hand").style.transform = `rotate(${secDeg}deg)`;
     }
 
-    setInterval(setDate, 1000);
+    // Update the clock every second
+    setInterval(updateClock, 1000);
+
+    // Initial update
+    updateClock();
 
 
   </script>
